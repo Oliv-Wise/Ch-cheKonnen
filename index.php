@@ -16,13 +16,42 @@ try {
 </head>
 <body>
 <header>
-  <h1>Chèche Konnen</h1>
-  <nav>
-    <a href="index.php">Accueil</a>
-    <a href="register.php">S'inscrire</a>
-    <a href="donate.php">Faire un don</a>
-    <a href="podcasts.php">Podcasts</a>
-  </nav>
+<div class="header-container">
+    <img src="images/logo.jpeg" alt="Logo Chèche Konnen" class="logo">
+    <h1>Chèche Konnen</h1>
+</div>
+<nav>
+  <ul class="nav-menu">
+    <li><a href="index.php">Accueil</a></li>
+    <li class="dropdown">
+      <a href="podcasts.php">Nos podcasts <span class="arrow">▾</span></a>
+      <ul class="dropdown-menu">
+        <li><a href="podcasts.php?cat=spiritualite">Spiritualité</a></li>
+        <li><a href="podcasts.php?cat=philosophie">Philosophie</a></li>
+        <li><a href="podcasts.php?cat=culture">Culture Haïtienne</a></li>
+        <!-- ajoute ici autant de catégories que nécessaire -->
+      </ul>
+    </li>
+    <li><a href="articles.php">Nos articles</a></li>
+    <?php if(isset($_SESSION['user_id'])): ?>
+      <li><a href="dashboard.php">Mon espace</a></li>
+      <li><a href="logout.php">Déconnexion</a></li>
+    <?php else: ?>
+      <li class="dropdown profile-dropdown">
+    <a href="login.php">
+      <img src="images/login_profilv.jpeg" alt="Profil" class="profile-icon">
+      S'identifier <span class="arrow">▾</span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="login.php">Se connecter</a></li>
+      <li><a href="register.php">S'inscrire</a></li>
+    </ul>
+  </li>
+    <?php endif; ?>
+    <li><a href="donate.php">Faire un don</a></li>
+  </ul>
+</nav>
+  
 </header>
 <div class="container">
   <h2>Bienvenue à Chèche Konnen</h2>
